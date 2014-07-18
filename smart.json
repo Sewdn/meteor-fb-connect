@@ -1,0 +1,8 @@
+{
+      "name": "facebook-connect",
+      "description": "Facebook Connect package to connect facebook users to existing users.",
+      "homepage": "https://github.com/Sewdn/meteor-fb-connect",
+      "author": "Pieter Soudan <pieter.soudan@redandivory.be> (http://redandivory.com)",
+      "version": "0.1.0",
+      "git": "https://github.com/Sewdn/meteor-fb-connect.git"
+}
