@@ -152,7 +152,7 @@ Accounts.externalServiceSelectorFacebook = function(
   selector["$or"][0][serviceIdKey] = serviceData.id;
   //also check on email
   selector["$or"][1]["emails.address"] = serviceData.email;
-  if (! serviceData.id && ! serviceData.email)
+  if (! serviceData.email)
     selector = false;
   return selector;
 };
