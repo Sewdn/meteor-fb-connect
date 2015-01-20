@@ -59,6 +59,9 @@ Accounts.updateOrCreateUserFromExternalService = function(
 
   var selector = Accounts.externalServiceSelector(serviceName, serviceData, options);
 
+  if (! selector)
+    return false;
+
   var user = Meteor.users.findOne(selector);
 
   if (user) {
@@ -107,7 +110,7 @@ Accounts.externalServiceSelector = function(
   }
 
   // Look for a user with the appropriate service user id.
-  if(!selector) {
+  if(!selector && !! serviceData.id) {
     var serviceIdKey = "services." + serviceName + ".id";
     selector[serviceIdKey] = serviceData.id;
   }
@@ -149,6 +152,8 @@ Accounts.externalServiceSelectorFacebook = function(
   selector["$or"][0][serviceIdKey] = serviceData.id;
   //also check on email
   selector["$or"][1]["emails.address"] = serviceData.email;
+  if (! serviceData.email)
+    selector = false;
   return selector;
 };
 
